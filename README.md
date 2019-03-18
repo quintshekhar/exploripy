@@ -10,11 +10,8 @@
 <a href="https://github.com/Vibish/exploripy/network/members">
   <img src="https://img.shields.io/github/forks/Vibish/exploripy.svg">
 </a>
-[![Build Status](https://travis-ci.org/bhagatsajan0073/dominance-analysis.svg?branch=master)](https://travis-ci.org/bhagatsajan0073/dominance-analysis)
-[![Build Status](https://dev.azure.com/shashanksist/shashank_sist/_apis/build/status/bhagatsajan0073.dominance-analysis?branchName=master)](https://dev.azure.com/shashanksist/shashank_sist/_build?definitionId=2)
-[![Build status](https://ci.appveyor.com/api/projects/status/t3w0hs7bhragnvbi?svg=true)](https://ci.appveyor.com/project/bhagatsajan0073/dominance-analysis)
-[![Documentation Status](https://readthedocs.org/projects/dominance-analysis/badge/?version=latest)](https://dominance-analysis.readthedocs.io/en/latest/?badge=latest)
-[![Maintainability](https://api.codeclimate.com/v1/badges/97a8614c71d05ef05a3e/maintainability)](https://codeclimate.com/github/bhagatsajan0073/dominance_analysis/maintainability) [![Join the chat at https://gitter.im/dominance_analysis/community](https://badges.gitter.im/dominance_analysis/community.svg)](https://gitter.im/dominance_analysis/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/quintshekhar/exploripy.svg?branch=master)](https://travis-ci.org/quintshekhar/exploripy)
+[![Build Status](https://dev.azure.com/shashanksist/shashank_sist/_apis/build/status/bhagatsajan0073.dominance-analysis?branchName=master)](https://dev.azure.com/shashanksist/shashank_sist/_build?definitionId=3)
 </br>
 Exploratory Data Analysis (EDA) is one of the crucial steps in data science that facilitates generating insights and statistical measures which are essential for building predictive models. EDA is always a time-consuming activity and require a thorough analysis of datasets to summarize their main characteristics. It is always required to do an initial analysis on the data, and then deep dive on further domain specific analysis, based on the initial insights. Currently, there is no comprehensive library in Python, which could do the initial Data Analysis and statistical tests, and present in an output, which could be easily interpreted shared across the stakeholders. Though there are several individual packages available for statistical tests, interpretation of the output requires certain level of statistical knowledge. <br>
 ExploriPy reduces a data analyst’s efforts significantly in the initial EDA. It is designed in a way to perform automated EDA, and statistical tests including Analysis of Variance, Chi Square Test of Independence, Weight of Evidence, Information Value and Tukey Honest Significance Difference. It provides easy interpretation on these statistical test results, based on industry standard assumptions. It expects a Pandas DataFrame, along with a list of categorical variables, as input. Output will be a presentable HTML document, with the result of analysis and statistical tests, represented through several interactive charts, and tables (with option to download as CSV). The ExploriPy package is available in the Python Package Index.
@@ -39,8 +36,8 @@ pip install ExploriPy
 #### Usage
 ``` 
 from ExploriPy import EDA
-df = pd.read_csv(' BigMartSales_Train.csv',na_values = 'nan')
-CategoricalFeatures = ['Item_Identifier','Outlet_Identifier','Item_Fat_Content','Item_Type','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','Outlet_Type','TrainTest']
+df = pd.read_csv('BigMartSales_Train.csv',na_values = 'nan')
+CategoricalFeatures = ['Item_Identifier','Outlet_Identifier','Item_Fat_Content','Item_Type','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','Outlet_Type']
 eda = EDA(train_df,CategoricalFeatures,OtherFeatures=['Outlet_Establishment_Year'],title='Exploratory Data Analysis for Big Mart Sales III - Based on Item_Outlet_Sales')
 eda.TargetAnalysis('Item_Outlet_Sales') # For Target Specific Analysis
 # eda.EDAToHTML() # For generic analysis on the dataset. 

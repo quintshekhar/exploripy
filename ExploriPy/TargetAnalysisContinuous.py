@@ -315,7 +315,7 @@ class TargetAnalysisContinuous:
 		g2.columns = ['category','total_count']
 		g1 = g1.merge(g2, how='left', on='category')
 		g1['null_percent'] = round((g1['null_count']*100)/g1['total_count'],2)
-		g1.drop(columns = ['null_count','total_count'], inplace = True)		
+		g1.drop(['null_count','total_count'], axis=1,inplace = True)		
 		g1.sort_values('null_percent',ascending = False, inplace = True)
 		g1 = g1.head(10)		
 		
@@ -382,7 +382,11 @@ class TargetAnalysisContinuous:
 			df[CategoricalFeature] = df[CategoricalFeature].astype(str)
 			df = df.merge(cat_list, left_on=CategoricalFeature, right_on='category', how='inner')			
 			edges,edgesValues, hist, histValues, pdf, color1, color2 = self.HistChart(list(df[target].dropna()))
-			tukey_histogram_list.append(dict(category = cat_name, edges = edges,edgesValues = edgesValues, hist = hist, histValues = histValues, pdf = pdf, color1 = self.SelectedColors[i], color2 = color2))
+			
+			if i >= len(self.SelectedColors) - 2:
+				tukey_histogram_list.append(dict(category = cat_name, edges = edges,edgesValues = edgesValues, hist = hist, histValues = histValues, pdf = pdf, color1 = self.AllColors[i], color2 = color2))
+			else: 
+				tukey_histogram_list.append(dict(category = cat_name, edges = edges,edgesValues = edgesValues, hist = hist, histValues = histValues, pdf = pdf, color1 = self.SelectedColors[i], color2 = color2))
 			i = i+1
 			
 		return tukey_histogram_list
